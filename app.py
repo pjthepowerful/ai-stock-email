@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 # Page config
 st.set_page_config(
@@ -50,10 +51,15 @@ col1, col2, col3 = st.columns([1, 2, 1])
 
 with col2:
     if st.button("🚀 Log In to Your Account", type="primary", use_container_width=True):
-        st.markdown("""
-            <meta http-equiv="refresh" content="0; url=https://aistockgenius.streamlit.app/">
-        """, unsafe_allow_html=True)
-        st.success("Redirecting to your account...")
+        # JavaScript redirect
+        components.html(
+            """
+            <script>
+                window.parent.location.href = "https://aistockgenius.streamlit.app/";
+            </script>
+            """,
+            height=0,
+        )
 
 st.markdown("<br><br>", unsafe_allow_html=True)
 
