@@ -51,11 +51,11 @@ col1, col2, col3 = st.columns([1, 2, 1])
 
 with col2:
     if st.button("🚀 Log In to Your Account", type="primary", use_container_width=True):
-        # JavaScript redirect
+        # JavaScript to open in new tab
         components.html(
             """
             <script>
-                window.parent.location.href = "https://aistockgenius.streamlit.app/";
+                window.open("https://aistockgenius.streamlit.app/", "_blank");
             </script>
             """,
             height=0,
