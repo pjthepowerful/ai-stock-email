@@ -90,7 +90,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 if st.button("Continue to AI Stock Genius"):
     st.markdown("""
     <script>
-        window.location.href = 'https://your-app-url.streamlit.app';
+        window.location.href = 'https://emailverifaction.streamlit.app/';
     </script>
     """, unsafe_allow_html=True)
 
