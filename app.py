@@ -3,7 +3,6 @@ Email Verification Success Page
 Clean, simple page that confirms email verification with working redirect
 """
 import streamlit as st
-import streamlit.components.v1 as components
 
 # PAGE CONFIG
 st.set_page_config(
@@ -83,23 +82,21 @@ st.markdown('<p class="subtitle">Your account has been successfully verified.</p
 st.markdown("You are good to go!")
 st.markdown("<br>", unsafe_allow_html=True)
 
-if st.button("Continue to AI Stock Genius"):
-    # Use components.html for more reliable redirect
-    components.html(
-        """
-        <script>
-            window.open('https://aistockgenius.streamlit.app/', '_top');
-        </script>
-        """,
-        height=0,
-    )
+st.markdown("""
+<a href="https://aistockgenius.streamlit.app/" target="_blank" style="
+    display: inline-block;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+">
+    Continue to AI Stock Genius
+</a>
+""", unsafe_allow_html=True)
 
 st.markdown('<p class="subtitle" style="margin-top: 2rem; font-size: 0.9rem;">Click the button above to start analyzing stocks</p>', unsafe_allow_html=True)
-
-# Alternative: Add a regular HTML link as absolute backup
-st.markdown("<br>", unsafe_allow_html=True)
-st.markdown("""
-<p class="subtitle" style="font-size: 0.9rem;">
-Button not working? <a href="https://aistockgenius.streamlit.app/" target="_blank" style="color: #10b981; text-decoration: underline;">Click here</a>
-</p>
-""", unsafe_allow_html=True)
