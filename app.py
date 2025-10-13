@@ -1,8 +1,7 @@
 """
 Email Verification Success Page
-Clean, simple page that confirms email verification
+Clean, simple page that confirms email verification with auto-redirect
 """
-
 import streamlit as st
 
 # PAGE CONFIG
@@ -55,48 +54,47 @@ st.markdown("""
         margin: 1.5rem 0 !important;
     }
     
-    .stButton > button {
+    .redirect-link {
+        display: inline-block;
         background: linear-gradient(135deg, #10b981 0%, #059669 100%);
         color: white !important;
-        border: none;
+        text-decoration: none !important;
         border-radius: 12px;
         padding: 1rem 2rem;
         font-weight: 600;
         font-size: 1.1rem;
-        width: 100%;
         margin-top: 2rem;
-        cursor: pointer;
         transition: all 0.3s ease;
     }
     
-    .stButton > button:hover {
+    .redirect-link:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
     }
 </style>
 """, unsafe_allow_html=True)
 
+# AUTO-REDIRECT SCRIPT
+st.markdown("""
+<script>
+    setTimeout(function() {
+        window.parent.location.href = 'https://aistockgenius.streamlit.app/';
+    }, 3000);
+</script>
+""", unsafe_allow_html=True)
+
 # PAGE CONTENT
 st.markdown('<div class="checkmark">✓</div>', unsafe_allow_html=True)
-
 st.markdown("# Your Email is Verified")
-
 st.markdown('<p class="subtitle">Your account has been successfully verified.</p>', unsafe_allow_html=True)
-
 st.markdown("You are good to go!")
-
 st.markdown("<br>", unsafe_allow_html=True)
 
-if st.button("Continue to AI Stock Genius"):
-    st.markdown("""
-    <meta http-equiv="refresh" content="0;url=https://aistockgenius.streamlit.app">
-    """, unsafe_allow_html=True)
-    
-    # Also use JavaScript as backup
-    st.markdown("""
-    <script>
-        window.top.location.href = 'https://aistockgenius.streamlit.app/';
-    </script>
-    """, unsafe_allow_html=True)
+# Manual redirect link as backup
+st.markdown("""
+<a href="https://aistockgenius.streamlit.app/" target="_top" class="redirect-link">
+    Continue to AI Stock Genius
+</a>
+""", unsafe_allow_html=True)
 
-st.markdown('<p class="subtitle" style="margin-top: 2rem; font-size: 0.9rem;">Click the button above to start analyzing stocks</p>', unsafe_allow_html=True)
+st.markdown('<p class="subtitle" style="margin-top: 2rem; font-size: 0.9rem;">Redirecting automatically in 3 seconds...</p>', unsafe_allow_html=True)
